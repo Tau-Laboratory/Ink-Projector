@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Lambert</name>
+  <id>org.inkscape.cartography.lambert</id>
+
+  <param name="tab" type="notebook">
+    <page name="Approximator" gui-text="Approximator">
+      <param name="precision" gui-text="Tolerance" type="float"  precision="5" min="0.0001" max="10000">0.1</param>
+      <param name="maximal_resolution" gui-text="Maximal Resolution" type="int" min="1" max="100">35</param>
+      <param name="increment" gui-text="Resolution Increment" type="int" min="1" max="100">1</param>
+      <param name="z_limit" gui-text="z Limit" type="float"  precision="2" min="0.00" max="10">0.0</param>
+      <param name="z_fill" gui-text="z Fill" type="int" min="1" max="100">4</param>
+      
+      <label xml:space="preserve">
+The 'Tolerance' is the maximal distance between the actual curve and the approximated curve.
+Should the actual distance be bigger we increase the resolution by the 'Resolution Increment'.
+This can be done until either the curve is approximated within tolerance or until the number of control points of the curve reaches the 'Maximal Resoution'.
+Increasing the Maximal Resolution or decreasing the Tolerance will improve the resulting quality at the cost of longer computation time.
+If the projection results in discontinuities or jumps where an otherwise smooth line suddenly jumps to another position you can use the 'z Limit' and 'z Fill' options to fill in the jump:
+If the 'z Limit' is not set to zero we compute so called "Z-Scores" for each distance. An unusually large jump will have a higher Z-Score. 
+If the Z-Score is above the 'z Limit' the gap will be filled in by inserting additional points. 
+A lower limit results in more gaps being filled in (except for a limit of zero wich results in no gaps being filled in).
+'z Fill' determines the number of points to be inserted into such a gap.
+      </label>
+    </page>
+  </param>
+  
+  <effect>
+    <!--object-type>path</object-type-->
+    <effects-menu>
+      <submenu name="Cartography">
+        <submenu name="Cylindrical Equal Area"/>
+      </submenu>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">src/lambert_extension.py</command>
+  </script>
+</inkscape-extension>

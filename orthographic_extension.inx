@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Orthographic</name>
+  <id>org.inkscape.cartography.orthographic</id>
+
+  <param name="tab" type="notebook">
+    <page name="Projection" gui-text="Approximator">
+        <param name="origin_latitude" gui-text="Origin Latitude" type="float" precision="2" min="-90" max="90">-90</param>
+        <param name="origin_longitude" gui-text="Origin Longitude" type="float" precision="2" min="-180" max="180">0</param>
+        <label xml:space="preserve">
+Select the center of the projection. Use Longitude = 0.0 and Latitude = -90 for the north pole and Latitude = 90 for the south pole.
+      </label>
+    </page>
+    <page name="Approximator" gui-text="Approximator">
+      <param name="precision" gui-text="Tolerance" type="float"  precision="5" min="0.0001" max="10000">0.1</param>
+      <param name="maximal_resolution" gui-text="Maximal Resolution" type="int" min="1" max="100">35</param>
+      <param name="increment" gui-text="Resolution Increment" type="int" min="1" max="100">1</param>
+      <param name="z_limit" gui-text="z Limit" type="float"  precision="2" min="0.00" max="10">0.0</param>
+      <param name="z_fill" gui-text="z Fill" type="int" min="1" max="100">4</param>
+      
+      <label xml:space="preserve">
+The 'Tolerance' is the maximal distance between the actual curve and the approximated curve.
+Should the actual distance be bigger we increase the resolution by the 'Resolution Increment'.
+This can be done until either the curve is approximated within tolerance or until the number of control points of the curve reaches the 'Maximal Resoution'.
+Increasing the Maximal Resolution or decreasing the Tolerance will improve the resulting quality at the cost of longer computation time.
+If the projection results in discontinuities or jumps where an otherwise smooth line suddenly jumps to another position you can use the 'z Limit' and 'z Fill' options to fill in the jump:
+If the 'z Limit' is not set to zero we compute so called "Z-Scores" for each distance. An unusually large jump will have a higher Z-Score. 
+If the Z-Score is above the 'z Limit' the gap will be filled in by inserting additional points. 
+A lower limit results in more gaps being filled in (except for a limit of zero wich results in no gaps being filled in).
+'z Fill' determines the number of points to be inserted into such a gap.
+      </label>
+    </page>
+  </param>
+  <!--
+  <param name="param_str" type="string" gui-text="Your name:"></param>
+  <param name="tab" type="notebook">
+    <page name="Options" gui-text="Personal Info">
+      <param name="color_param" gui-text="Nail Color" type="color">-1</param>
+      <param name="int_param" type="int" appearance="full" min="0" max="100" indent="0" gui-text="Age">0</param>
+      <param name="float_param" type="float" min="1" max="1000" gui-text="Height (meters):">1.5</param>
+      <param name="option_param" type="optiongroup" appearance="radio" gui-text="I like:">
+        <option value="choc">Chocolate</option>
+        <option value="shoe">Shoes</option>
+        <option value="oper">Opera</option>
+      </param>
+    </page>
+    <page name="Help" gui-text="Help">
+      <label xml:space="preserve">
+This template provides extension writers with a basis to write their python based Inkscape extensions quickly and properly.
+
+This testing help text can be changed to help users of the extension.
+      </label>
+     </page>
+   </param>
+   <param name="bool_param" type="bool" gui-text="God powers?">true</param>
+   -->
+  <effect>
+    <!--object-type>path</object-type-->
+    <effects-menu>
+      <submenu name="Cartography"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command location="inx" interpreter="python">src/orthographic_extension.py</command>
+  </script>
+</inkscape-extension>
