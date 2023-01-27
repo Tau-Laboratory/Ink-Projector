@@ -18,7 +18,7 @@ class CubicSplineInterpolator():
           interpolation axis must be equal to the length of x.
 
     Natural cubic spline interpolate function
-    This function is licenced under: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+    This class is licenced under: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
     https://creativecommons.org/licenses/by-sa/3.0/
     Author raphael valentin
     Date 25 Mar 2022
