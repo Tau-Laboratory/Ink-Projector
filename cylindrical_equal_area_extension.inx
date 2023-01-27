@@ -4,7 +4,7 @@
   <id>org.inkscape.cartography.cylindrical_equal_area</id>
 
   <param name="tab" type="notebook">
-    <page name="Projection" gui-text="Approximator">
+    <page name="Projection" gui-text="Projection">
         <param name="standard_latitude" gui-text="Standard Parallels" type="float" precision="2" min="0" max="180">0</param>
     </page>
     <page name="Approximator" gui-text="Approximator">

@@ -4,7 +4,7 @@
   <id>org.inkscape.cartography.orthographic</id>
 
   <param name="tab" type="notebook">
-    <page name="Projection" gui-text="Approximator">
+    <page name="Projection" gui-text="Projection">
         <param name="origin_latitude" gui-text="Origin Latitude" type="float" precision="2" min="-90" max="90">-90</param>
         <param name="origin_longitude" gui-text="Origin Longitude" type="float" precision="2" min="-180" max="180">0</param>
         <label xml:space="preserve">

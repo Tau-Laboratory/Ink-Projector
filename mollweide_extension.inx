@@ -4,7 +4,7 @@
   <id>org.inkscape.cartography.mollweide</id>
 
   <param name="tab" type="notebook">
-    <page name="Projection" gui-text="Approximator">
+    <page name="Projection" gui-text="Projection">
         <param name="newton_raphson_precision" gui-text="Newton Raphson Precision" type="float" precision="4" min="0.0001" max="2">0.05</param>
     </page>
     <page name="Approximator" gui-text="Approximator">
